@@ -12,3 +12,8 @@ export const PLAY_BUTTON = [
     image: smallReactImg,
   },
 ];
+
+export const WORDS = [
+  ["pickle", "time", "cookie"],
+  ["onyx", "pterydactyl", "sphynx"],
+];
