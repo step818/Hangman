@@ -2,14 +2,26 @@ import ReturnToHome from "./ReturnToHome";
 import { useState } from "react";
 
 export default function GameBoard({ onReturn, chosenWord, difficulty }) {
-  const [guess, setGuess] = useState();
-  let arrWord = chosenWord.split("");
+  let wordSplit = chosenWord.split("");
+  let initialGameBoard = wordSplit.map((l, rowIndex) => (
+    <p key={rowIndex}>_</p>
+  ));
 
-  function handleGuess(letter) {
-    setGuess(letter);
+  const [gameBoard, setGameBoard] = useState(initialGameBoard);
+  const [potentialGuess, setPotentialGuess] = useState("");
+  const [guess, setGuess] = useState("");
+
+  function handleGuessSubmit() {
+    setGuess(potentialGuess);
+    // check if guess is in the word and not already in the wordbank, then set gameBoard to reflect guess
+    // if guess is not in the word, update man
+    // set wordbank to include all guesses
+    // dont allow dublicate letters to be guessed
   }
 
-  function inputChangedHandler() {}
+  function handleChange(e) {
+    setPotentialGuess(e.target.value);
+  }
 
   return (
     <div>
@@ -21,17 +33,15 @@ export default function GameBoard({ onReturn, chosenWord, difficulty }) {
           <i>The word is {chosenWord}</i>
         </p>
         <p>Take your guess!</p>
-        <form>
-          <input
-            id="letter"
-            value=""
-            changed={() => inputChangedHandler()}
-          ></input>
-          <button onClick={() => handleGuess()}>Submit!</button>
-        </form>
-        {arrWord.map((space) => (
-          <p>_</p>
-        ))}
+
+        <input
+          id="letter"
+          required
+          onChange={handleChange}
+          value={potentialGuess}
+        ></input>
+        <button onClick={handleGuessSubmit}>Submit!</button>
+        {gameBoard}
       </ReturnToHome>
     </div>
   );
