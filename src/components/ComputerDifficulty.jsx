@@ -14,9 +14,9 @@ export default function ComputerDifficulty({ onReturn }) {
   function handleWordChoosing(difficulty) {
     const indexOfWordList = getRandomNumber(2);
     if (difficulty === "Easy") {
-      return WORDS[0][indexOfWordList];
+      return WORDS[0][indexOfWordList].toUpperCase();
     } else {
-      return WORDS[1][indexOfWordList];
+      return WORDS[1][indexOfWordList].toUpperCase();
     }
   }
 

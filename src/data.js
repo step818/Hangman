@@ -14,8 +14,8 @@ export const PLAY_BUTTON = [
 ];
 
 export const WORDS = [
-  ["pickle", "time", "cookie"],
-  ["onyx", "pterydactyl", "sphynx"],
+  ["PICKLE", "TIME", "COOKIE"],
+  ["ONYX", "PTERYDACTYL", "SPHYNX"],
 ];
 
 export const ALPHABET = [

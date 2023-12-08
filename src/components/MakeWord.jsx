@@ -11,7 +11,7 @@ export default function MakeWord({ onReturn }) {
   }
 
   function handleChange(e) {
-    setChange(e.target.value);
+    setChange(e.target.value.toUpperCase());
   }
 
   let playerScreen = (
@@ -20,7 +20,7 @@ export default function MakeWord({ onReturn }) {
       <p>Choose one of you to be the "Word Creator."</p>
       <p>Type your challenging word here...</p>
       <input onChange={handleChange} required></input>
-      <button onClick={handleReadyToPlay}></button>
+      <button onClick={handleReadyToPlay}>Ready to Play!</button>
     </ReturnToHome>
   );
 
