@@ -1,13 +1,16 @@
+import { ALPHABET } from "../data";
+import Keyboard from "./Keyboard";
 import ReturnToHome from "./ReturnToHome";
 import { useState } from "react";
 
 export default function GameBoard({ onReturn, chosenWord, difficulty }) {
   let wordSplit = chosenWord.split("");
   let initialGameBoard = [];
-  for (let i = 0; i < wordSplit.length; i++) {
-    initialGameBoard.push("_ ");
-  }
+  // for (let i = 0; i < wordSplit.length; i++) {
+  //   initialGameBoard.push("_ ");
+  // }
 
+  const [guessedLetters, setGuessedLetters] = useState(["t"]);
   const [gameBoard, setGameBoard] = useState(initialGameBoard);
   const [potentialGuess, setPotentialGuess] = useState("");
   const [guess, setGuess] = useState("");
@@ -48,17 +51,18 @@ export default function GameBoard({ onReturn, chosenWord, difficulty }) {
           <i>The word is {chosenWord}</i>
         </p>
         <p>Take your guess!</p>
-
-        <input
-          id="letter"
-          required
-          onChange={handleChange}
-          value={potentialGuess}
-        ></input>
-        <button onClick={() => handleGuessSubmit(potentialGuess)}>
-          Submit!
-        </button>
-        {gameBoard}
+        {chosenWord.split("").map((letter, index) => (
+          <span style={{ borderBottom: ".1em solid black" }} key={index}>
+            <span
+              style={{
+                visibility: guessedLetters.includes(letter)
+                  ? "visible"
+                  : "hidden",
+              }}
+            ></span>
+          </span>
+        ))}
+        <Keyboard />
       </ReturnToHome>
     </div>
   );

@@ -3,7 +3,7 @@ import ReturnToHome from "./ReturnToHome.jsx";
 import { WORDS } from "../data.js";
 import { useState } from "react";
 
-function chooseRandomWord(max) {
+function getRandomNumber(max) {
   return Math.floor(Math.random() * (max + 1));
 }
 
@@ -12,11 +12,11 @@ export default function ComputerDifficulty({ onReturn }) {
   const [chosenWord, setChosenWord] = useState();
 
   function handleWordChoosing(difficulty) {
-    const temp = chooseRandomWord(2);
+    const indexOfWordList = getRandomNumber(2);
     if (difficulty === "Easy") {
-      return WORDS[0][temp];
+      return WORDS[0][indexOfWordList];
     } else {
-      return WORDS[1][temp];
+      return WORDS[1][indexOfWordList];
     }
   }
 

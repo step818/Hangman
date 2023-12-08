@@ -13,7 +13,6 @@ function App() {
 
   function handlePlayType(playingWho) {
     setSelectedPlayer(playingWho);
-    console.log(selectedPlayer);
     //state will determine which screen gets shown next
   }
   if (selectedPlayer === "Computer") {
