@@ -27,7 +27,16 @@ export default function GameBoard({ onReturn, chosenWord, difficulty }) {
   );
 
   return (
-    <div>
+    <div
+      style={{
+        maxWidth: "800px",
+        display: "flex",
+        flexDirection: "column",
+        gap: "2rem",
+        margin: "0 auto",
+        alignItems: "center",
+      }}
+    >
       <ReturnToHome onReturn={onReturn}>
         <p>You've chosen the {difficulty} difficulty level.</p>
         {wrongGuesses}
