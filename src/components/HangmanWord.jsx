@@ -3,11 +3,11 @@ export default function HangmanWord({ correctGuesses, chosenWord }) {
     <div
       style={{
         display: "flex",
-        gap: ".25rem",
+        gap: ".25em",
         fontSize: "6rem",
         fontWeight: "bold",
         textTransform: "uppercase",
-        fonFamily: "monospace",
+        fontFamily: "monospace",
       }}
     >
       {chosenWord.split("").map((letter, index) => (

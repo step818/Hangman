@@ -1,13 +1,39 @@
+import { useCallback, useEffect, useState } from "react";
+
 import { ALPHABET } from "../data";
 import HangmanDrawing from "./HangmanDrawing";
 import HangmanWord from "./HangmanWord";
 import Keyboard from "./Keyboard";
 import ReturnToHome from "./ReturnToHome";
-import { useState } from "react";
 
 export default function GameBoard({ onReturn, chosenWord, difficulty }) {
   const [correctGuesses, setCorrectGuesses] = useState([]);
   const [guessedLetters, setGuessedLetters] = useState([]);
+
+  const addGuessedLetter = useCallback(
+    (key) => {
+      const letter = key.toUpperCase();
+      if (guessedLetters.includes(key)) return;
+
+      handleGuess(letter);
+    },
+    [handleGuess, guessedLetters]
+  );
+
+  useEffect(() => {
+    const handler = (e) => {
+      const key = e.key;
+
+      if (!key.match(/^[a-z]$/)) return;
+
+      e.preventDefault();
+      addGuessedLetter(key);
+    };
+    document.addEventListener("keypress", handler);
+    return () => {
+      document.removeEventListener("keypress", handler);
+    };
+  }, [guessedLetters, addGuessedLetter]);
 
   function handleGuess(al) {
     console.log(al);
@@ -50,6 +76,7 @@ export default function GameBoard({ onReturn, chosenWord, difficulty }) {
         <HangmanWord correctGuesses={correctGuesses} chosenWord={chosenWord} />
         <div style={{ alignSelf: "stretch" }}>
           <Keyboard
+            correctGuesses={correctGuesses}
             alphabet={ALPHABET}
             guessedLetters={guessedLetters}
             handleGuess={handleGuess}
