@@ -4,7 +4,8 @@ export default function Keyboard({
   alphabet,
   handleGuess,
   guessedLetters,
-  gameLost,
+  isLoser,
+  isWinner,
   correctGuesses,
 }) {
   console.log("correctGuesses: ", correctGuesses);
@@ -25,9 +26,7 @@ export default function Keyboard({
             className={`${styles.btn} ${isActive ? styles.active : ""} ${
               isInactive ? styles.inactive : ""
             } `}
-            disabled={
-              guessedLetters.includes(al) || gameLost === true ? true : false
-            }
+            disabled={guessedLetters.includes(al) || isLoser || isWinner}
             key={index}
             onClick={() => {
               handleGuess(al);

@@ -10,14 +10,19 @@ export default function GameBoard({ onReturn, chosenWord, difficulty }) {
   const [correctGuesses, setCorrectGuesses] = useState([]);
   const [guessedLetters, setGuessedLetters] = useState([]);
 
+  const isLoser = guessedLetters.length - correctGuesses.length >= 6;
+  const isWinner = chosenWord
+    .split("")
+    .every((letter) => guessedLetters.includes(letter));
+
   const addGuessedLetter = useCallback(
     (key) => {
       const letter = key.toUpperCase();
-      if (guessedLetters.includes(key)) return;
+      if (guessedLetters.includes(key) || isLoser || isWinner) return;
 
       handleGuess(letter);
     },
-    [handleGuess, guessedLetters]
+    [handleGuess, guessedLetters, isLoser, isWinner]
   );
 
   useEffect(() => {
@@ -42,11 +47,6 @@ export default function GameBoard({ onReturn, chosenWord, difficulty }) {
     }
     setGuessedLetters([...guessedLetters, al]);
   }
-  let gameLost = false;
-  // const maskedWord = chosenWord
-  //   .split("")
-  //   .map((letter) => (correctGuesses.includes(letter) ? letter : "_"))
-  //   .join(" ");
 
   const wrongGuesses = guessedLetters.filter(
     (letter) => !chosenWord.includes(letter)
@@ -67,12 +67,12 @@ export default function GameBoard({ onReturn, chosenWord, difficulty }) {
         <p>You've chosen the {difficulty} difficulty level.</p>
         {wrongGuesses}
         <HangmanDrawing wrongGuesses={wrongGuesses.length} />
-        {gameLost ? <p>You lose</p> : null}
-        {gameLost ? (
+        {isLoser && (
           <p>
-            <i>The word is {chosenWord}</i>
+            You lose. <i>The word is {chosenWord}</i>
           </p>
-        ) : null}
+        )}
+        {isWinner && <p>You win!!</p>}
         <HangmanWord correctGuesses={correctGuesses} chosenWord={chosenWord} />
         <div style={{ alignSelf: "stretch" }}>
           <Keyboard
@@ -80,7 +80,8 @@ export default function GameBoard({ onReturn, chosenWord, difficulty }) {
             alphabet={ALPHABET}
             guessedLetters={guessedLetters}
             handleGuess={handleGuess}
-            gameLost={gameLost}
+            isLoser={isLoser}
+            isWinner={isWinner}
           />
         </div>
       </ReturnToHome>
