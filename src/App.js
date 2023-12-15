@@ -21,17 +21,7 @@ function App() {
     return <MakeWord onReturn={() => handlePlayType("")} />;
   } else {
     return (
-      <div
-        className="App"
-        style={{
-          maxWidth: "800px",
-          display: "flex",
-          flexDirection: "column",
-          gap: "2rem",
-          margin: "0 auto",
-          alignItems: "center",
-        }}
-      >
+      <div className="App">
         <Header />
         <main>
           <section id="core-concepts">

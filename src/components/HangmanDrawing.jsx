@@ -78,7 +78,7 @@ const LEFT_LEG = (
       background: "black",
       position: "absolute",
       top: "210px",
-      right: "0px",
+      right: 0,
       rotate: "-60deg",
       transformOrigin: "right bottom",
     }}
@@ -105,7 +105,7 @@ export default function HangmanDrawing({ wrongGuesses }) {
           height: "10px",
           width: "200px",
           background: "black",
-          marginLeft: "120px",
+          marginLeft: "460px",
         }}
       />
       <div
@@ -113,10 +113,17 @@ export default function HangmanDrawing({ wrongGuesses }) {
           height: "400px",
           width: "10px",
           background: "black",
-          marginLeft: "120px",
+          marginLeft: "460px",
         }}
       />
-      <div style={{ height: "10px", width: "250px", background: "black" }} />
+      <div
+        style={{
+          height: "10px",
+          width: "250px",
+          background: "black",
+          marginLeft: "335px",
+        }}
+      />
       {BODY_PARTS.slice(0, wrongGuesses)}
     </div>
   );

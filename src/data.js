@@ -15,7 +15,18 @@ export const PLAY_BUTTON = [
 
 export const WORDS = [
   ["PICKLE", "TIME", "COOKIE"],
-  ["ONYX", "PTERYDACTYL", "SPHYNX"],
+  [
+    "ONYX",
+    "PTERYDACTYL",
+    "SPHINX",
+    "foxglove",
+    "fuchsia",
+    "lymph",
+    "megahertz",
+    "quixotic",
+    "xylophone",
+    "jazziest",
+  ],
 ];
 
 export const ALPHABET = [

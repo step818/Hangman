@@ -12,17 +12,16 @@ export default function ComputerDifficulty({ onReturn }) {
   const [chosenWord, setChosenWord] = useState();
 
   function handleWordChoosing(difficulty) {
-    const indexOfWordList = getRandomNumber(2);
+    const index = getRandomNumber(9);
     if (difficulty === "Easy") {
-      return WORDS[0][indexOfWordList].toUpperCase();
+      return WORDS[0][index].toUpperCase();
     } else {
-      return WORDS[1][indexOfWordList].toUpperCase();
+      return WORDS[1][index].toUpperCase();
     }
   }
 
   function handleDifficulty(difficulty) {
     setChosenWord(handleWordChoosing(difficulty));
-    console.log(chosenWord);
     setDifficulty(difficulty);
   }
 

@@ -65,15 +65,21 @@ export default function GameBoard({ onReturn, chosenWord, difficulty }) {
     >
       <ReturnToHome onReturn={onReturn}>
         <p>You've chosen the {difficulty} difficulty level.</p>
-        {wrongGuesses}
-        <HangmanDrawing wrongGuesses={wrongGuesses.length} />
         {isLoser && (
-          <p>
+          <div style={{ fontSize: "2rem", textAlign: "center" }}>
             You lose. <i>The word is {chosenWord}</i>
-          </p>
+          </div>
         )}
         {isWinner && <p>You win!!</p>}
-        <HangmanWord correctGuesses={correctGuesses} chosenWord={chosenWord} />
+        <HangmanDrawing wrongGuesses={wrongGuesses.length} />
+        <h3>Word bank:</h3>
+        {wrongGuesses}
+
+        <HangmanWord
+          correctGuesses={correctGuesses}
+          chosenWord={chosenWord}
+          reveal={isLoser}
+        />
         <div style={{ alignSelf: "stretch" }}>
           <Keyboard
             correctGuesses={correctGuesses}

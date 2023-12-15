@@ -1,4 +1,4 @@
-export default function HangmanWord({ correctGuesses, chosenWord }) {
+export default function HangmanWord({ correctGuesses, chosenWord, reveal }) {
   return (
     <div
       style={{
@@ -14,9 +14,12 @@ export default function HangmanWord({ correctGuesses, chosenWord }) {
         <span style={{ borderBottom: ".1em solid black" }} key={index}>
           <span
             style={{
-              visibility: correctGuesses.includes(letter)
-                ? "visible"
-                : "hidden",
+              visibility:
+                correctGuesses.includes(letter) || reveal
+                  ? "visible"
+                  : "hidden",
+              color:
+                !correctGuesses.includes(letter) && reveal ? "red" : "black",
             }}
           >
             {letter}
