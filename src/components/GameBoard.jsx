@@ -1,3 +1,4 @@
+import { Box, Container, Text } from "@chakra-ui/react";
 import { useCallback, useEffect, useState } from "react";
 
 import { ALPHABET } from "../data";
@@ -72,14 +73,17 @@ export default function GameBoard({ onReturn, chosenWord, difficulty }) {
         )}
         {isWinner && <p>You win!!</p>}
         <HangmanDrawing wrongGuesses={wrongGuesses.length} />
-        <h3>Word bank:</h3>
-        {wrongGuesses}
-
-        <HangmanWord
-          correctGuesses={correctGuesses}
-          chosenWord={chosenWord}
-          reveal={isLoser}
-        />
+        <Container border="1px" m={3} p={3} borderRadius={15}>
+          <Text fontSize="5xl">Word bank:</Text>
+          <Text fontSize="4xl">{wrongGuesses}</Text>
+        </Container>
+        <Box p={6}>
+          <HangmanWord
+            correctGuesses={correctGuesses}
+            chosenWord={chosenWord}
+            reveal={isLoser}
+          />
+        </Box>
         <div style={{ alignSelf: "stretch" }}>
           <Keyboard
             correctGuesses={correctGuesses}

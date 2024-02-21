@@ -1,7 +1,9 @@
+import { Button } from "@chakra-ui/react";
+
 export default function ReturnToHome({ onReturn, children }) {
   return (
     <div>
-      <button onClick={onReturn}>Return to Home</button>
+      <Button onClick={onReturn}>Go Back to Home</Button>
       {children}
     </div>
   );

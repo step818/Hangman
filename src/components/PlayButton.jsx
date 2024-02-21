@@ -1,11 +1,19 @@
-export default function PlayButton({ title, image, description, onClickitty }) {
+import { Button } from "@chakra-ui/react";
+
+export default function PlayButton({ title, description, onClickitty }) {
   return (
-    <div>
-      <button onClick={onClickitty}>
-        <img src={image} alt={title} />
-        <h3>{title}</h3>
-        <p>{description}</p>
-      </button>
-    </div>
+    <>
+      <Button
+        colorScheme="teal"
+        size="lg"
+        height="52px"
+        border="4px"
+        borderColor="pink.400"
+        onClick={onClickitty}
+      >
+        {title}
+        {description}
+      </Button>
+    </>
   );
 }

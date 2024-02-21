@@ -1,3 +1,5 @@
+import { Button, Container, Input, Stack, VStack } from "@chakra-ui/react";
+
 import GameBoard from "./GameBoard";
 import ReturnToHome from "./ReturnToHome";
 import { useState } from "react";
@@ -15,13 +17,34 @@ export default function MakeWord({ onReturn }) {
   }
 
   let playerScreen = (
-    <ReturnToHome onReturn={onReturn}>
-      <h2>You chose to play each other.</h2>
-      <p>Choose one of you to be the "Word Creator."</p>
-      <p>Type your challenging word here...</p>
-      <input onChange={handleChange} required></input>
-      <button onClick={handleReadyToPlay}>Ready to Play!</button>
-    </ReturnToHome>
+    <>
+      <ReturnToHome onReturn={onReturn} />
+      <Stack spacing={4}>
+        <Container>
+          You chose to play each other. Choose one of you to be the "Word
+          Creator."
+        </Container>
+        <Input
+          isRequired
+          placeholder="Type your challenging word here"
+          width="500px"
+          variant="filled"
+          size="sm"
+          onChange={handleChange}
+        />
+        <Button
+          isDisabled={!change}
+          colorScheme="teal"
+          size="lg"
+          height="52px"
+          border="4px"
+          borderColor="pink.400"
+          onClick={handleReadyToPlay}
+        >
+          Ready to Play!
+        </Button>
+      </Stack>
+    </>
   );
 
   if (isReadyToPlay) {

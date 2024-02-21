@@ -1,13 +1,30 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import "./index.css";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import {
+  ChakraProvider,
+  theme as chakraTheme,
+  extendBaseTheme,
+} from "@chakra-ui/react";
+
+import App from "./App";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import reportWebVitals from "./reportWebVitals";
+
+const { Button } = chakraTheme.components;
+
+const theme = extendBaseTheme({
+  components: {
+    Button,
+  },
+});
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <ChakraProvider theme={theme}>
+      <App />
+    </ChakraProvider>
   </React.StrictMode>
 );
 

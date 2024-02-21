@@ -2,19 +2,30 @@ import smallReactImg from "./assets/logo192.png";
 
 export const PLAY_BUTTON = [
   {
-    title: "Computer",
+    title: "Play against Computer",
     image: smallReactImg,
-    description: "You're gonna lose😈",
+    description: "🤖",
   },
   {
-    title: "Friend",
-    description: "You're fun😎",
+    title: "Play against Human",
+    description: "😎",
     image: smallReactImg,
   },
 ];
 
 export const WORDS = [
-  ["PICKLE", "TIME", "COOKIE"],
+  [
+    "PICKLE",
+    "TIME",
+    "COOKIE",
+    "Nincompoop",
+    "Belly",
+    "Bee",
+    "Rose",
+    "Orange",
+    "Penguin",
+    "Laugh",
+  ],
   [
     "ONYX",
     "PTERYDACTYL",
